@@ -1,27 +1,38 @@
 package com.example.MS_reservas.models;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.validation.annotation.Validated;
 
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
 import java.util.Date;
-
+@Validated
 public class Reserva {
     @Id
     private String idReserva;
+    @NotBlank(message = "El campo descripción es requerido")
     private String descripcion;
+    @NotNull(message = "El campo fecha inicio de solicitud es requerido")
     private Date fechaSolicitud;
+    @NotNull(message = "El campo fecha fin de solicitud es requerido")
     private Date fechaFin;
+    @NotBlank(message = "El campo duracion es requerido")
     private String duracion;
+    @NotBlank(message = "El campo id de usuario es requerido")
     private String idUsuario;
+    @NotBlank(message = "El campo id de laboratorio es requerido")
     private String idLaboratorio;
+    private Boolean estado;
 
-    public Reserva(String idReserva, String descripcion, Date fechaSolicitud, Date fechaFin, String duracion, String idUsuario, String idLaboratorio) {
-        this.idReserva = idReserva;
+
+    public Reserva(String descripcion, Date fechaSolicitud, Date fechaFin, String duracion, String idUsuario, String idLaboratorio) {
         this.descripcion = descripcion;
         this.fechaSolicitud = fechaSolicitud;
         this.fechaFin = fechaFin;
         this.duracion = duracion;
         this.idUsuario = idUsuario;
         this.idLaboratorio = idLaboratorio;
+        this.estado = false;
     }
 
     public String getIdReserva() {
@@ -79,4 +90,9 @@ public class Reserva {
     public void setIdLaboratorio(String idLaboratorio) {
         this.idLaboratorio = idLaboratorio;
     }
+
+    public Boolean getEstado() {return estado; }
+
+    public void setEstado(Boolean estado) { this.estado = estado;  }
+
 }
