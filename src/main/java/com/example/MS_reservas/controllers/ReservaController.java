@@ -112,7 +112,7 @@ public class ReservaController {
         checkDates(fechaFin,fechaSolicitud,duracion);
 
         Reserva reserva = new Reserva(_reserva.getDescripcion(), _reserva.getFechaSolicitud(),_reserva.getFechaFin(),_reserva.getDuracion(),_reserva.getIdUsuario(),_reserva.getIdLaboratorio());
-
+        reserva.setIdReserva(_reserva.getIdReserva());
         Reserva reservaUpdated = reservaRepository.save(reserva);
         ResponseAPI res = new ResponseAPI();
         ArrayList<Reserva> responseList = new ArrayList<Reserva>();
